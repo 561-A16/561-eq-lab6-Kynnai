@@ -6,10 +6,10 @@ ENV ASPNETCORE_URLS http://+:5000
 
 EXPOSE 5000
 
-COPY StartScript.sh StartScript.sh
+COPY /script/StartScript.sh ../script/StartScript.sh
 
-RUN chmod +x StartScript.sh
+RUN chmod +x ../script/StartScript.sh
 
-CMD ["sh", "StartScript.sh"]
+CMD ["sh", "../script/StartScript.sh"]
 
 COPY /src /src

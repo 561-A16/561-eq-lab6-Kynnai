@@ -1,0 +1,5 @@
+apt-get install docker.io  -y
+ln -sf /usr/bin/docker.io /usr/local/bin/docker
+
+docker build -t "webapp:test" .
+docker run -it --rm -v "$PWD/packages:/root/.nuget/packages webapp:test"
