@@ -1,5 +1,16 @@
-apt-get install docker.io  -y
-ln -sf /usr/bin/docker.io /usr/local/bin/docker
+sudo: required
 
-docker build -t "webapp:test" .
-docker run -it --rm -v "$PWD/packages:/root/.nuget/packages webapp:test"
+language: csharp
+
+cache:
+  directories:
+    - packages
+
+services:
+  - docker
+
+before_install:
+  - docker build -t webapp:test .
+
+script:
+  - docker run -it --rm -v $PWD/packages:/root/.nuget/packages webapp:test
